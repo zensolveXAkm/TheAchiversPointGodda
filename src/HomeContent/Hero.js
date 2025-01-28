@@ -4,10 +4,12 @@ import { FaRocket, FaArrowDown } from "react-icons/fa";
 const HeroSection = () => {
   return (
     <section
-      className="relative text-white py-24 text-center overflow-hidden bg-cover bg-center"
+      className="relative text-white min-h-screen text-center overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: "url('/darkside.png')",
-        background-size: "cover";
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Overlay */}
