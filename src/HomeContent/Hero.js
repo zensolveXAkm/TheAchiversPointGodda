@@ -7,6 +7,7 @@ const HeroSection = () => {
       className="relative text-white py-24 text-center overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: "url('/darkside.png')",
+        background-size: "cover";
       }}
     >
       {/* Overlay */}
