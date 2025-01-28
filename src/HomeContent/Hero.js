@@ -1,20 +1,15 @@
-import React from 'react';
-import { FaRocket, FaArrowDown } from 'react-icons/fa';
+import React from "react";
+import { FaRocket, FaArrowDown } from "react-icons/fa";
 
 const HeroSection = () => {
   return (
-    <section className="relative text-white py-24 text-center overflow-hidden">
-      {/* Background Video */}
-      <video
-        className="absolute inset-0 object-cover w-full h-full z-0"
-        autoPlay
-        loop
-        muted
-      >
-        <source src="/darkside.png" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-
+    <section
+      className="relative text-white py-24 text-center overflow-hidden bg-cover bg-center"
+      style={{
+        backgroundImage: "url('/darkside.png')",
+      }}
+    >
+      {/* Overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent z-10 opacity-80"></div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-6">
@@ -37,7 +32,9 @@ const HeroSection = () => {
                 alt="THE ACHIEVERS' POINT"
                 className="mx-auto mb-4 w-32 h-32 rounded-full object-cover"
               />
-              <h2 className="text-3xl font-semibold text-indigo-400 font-outfit">THE ACHIEVERS' POINT</h2>
+              <h2 className="text-3xl font-semibold text-indigo-400 font-outfit">
+                THE ACHIEVERS' POINT
+              </h2>
             </div>
           </div>
         </div>
