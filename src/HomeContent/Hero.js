@@ -11,7 +11,7 @@ const HeroSection = () => {
         loop
         muted
       >
-        <source src="/darkside.mp4" type="video/mp4" />
+        <source src="/darkside.png" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
