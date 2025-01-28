@@ -7,7 +7,6 @@ const HeroSection = () => {
       className="relative text-white min-h-screen text-center overflow-hidden bg-cover bg-center"
       style={{
         backgroundImage: "url('/darkside.png')",
-        backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
       }}
