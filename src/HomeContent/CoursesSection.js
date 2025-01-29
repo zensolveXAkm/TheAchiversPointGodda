@@ -1,10 +1,7 @@
 import React from 'react';
-import { FaBook, FaCalculator, FaUniversity, FaBalanceScale } from 'react-icons/fa';
-import { GiPublicSpeaker, GiDiploma, GiAchievement } from 'react-icons/gi';
+import { FaBook, FaCalculator,  } from 'react-icons/fa';
+import { GiDiploma } from 'react-icons/gi';
 import { BsFillGridFill } from 'react-icons/bs';
-import { GiTargetPrize } from "react-icons/gi";
-import {  FaGraduationCap } from "react-icons/fa";
-import { MdSchool } from "react-icons/md";
 
 const coursesData = [
   {
@@ -22,43 +19,8 @@ const coursesData = [
 
 const competitiveExamsData = [
   {
-    exam: 'SSC',
+    exam: 'Competitive Exams',
     icon: <GiDiploma className="text-4xl text-red-500" />,
-    courses: ['Basic to Advance English', 'Vocabulary', 'Practice Course', '120 Rules of Grammar'],
-  },
-  {
-    exam: 'Banking',
-    icon: <GiPublicSpeaker className="text-4xl text-orange-500" />,
-    courses: ['Basic to Advance English', 'Vocabulary', 'Practice Course', '120 Rules of Grammar'],
-  },
-  {
-    exam: 'CLAT',
-    icon: <FaBalanceScale className="text-4xl text-purple-500" />,
-    courses: ['Basic to Advance English', 'Vocabulary', 'Practice Course', '120 Rules of Grammar'],
-  },
-  {
-    exam: 'CAT',
-    icon: <FaGraduationCap className="text-4xl text-blue-500" />,
-    courses: ['Verbal Ability and Reading Comprehension', 'Vocabulary Booster', 'Logical Reasoning', 'Grammar Skills'],
-  },
-  {
-    exam: 'MAT',
-    icon: <GiTargetPrize className="text-4xl text-yellow-500" />,
-    courses: ['Reading Comprehension', 'Critical Reasoning', 'Grammar and Sentence Correction', 'Vocabulary Building'],
-  },
-  {
-    exam: 'XAT',
-    icon: <MdSchool className="text-4xl text-teal-500" />,
-    courses: ['Verbal Ability and Logical Reasoning', 'Essay Writing', 'Vocabulary', 'Advanced Grammar Rules'],
-  },
-  {
-    exam: 'CUET',
-    icon: <GiDiploma className="text-4xl text-pink-500" />,
-    courses: ['English Language Preparation', 'Grammar Mastery', 'Reading Skills', 'Comprehensive Practice'],
-  },
-  {
-    exam: 'UPSC',
-    icon: <GiAchievement className="text-4xl text-green-700" />,
     courses: ['Basic to Advance English', 'Vocabulary', 'Practice Course', '120 Rules of Grammar'],
   },
 ];

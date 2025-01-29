@@ -18,14 +18,11 @@ const AdmissionPage = () => {
   });
 
   const [profilePhoto, setProfilePhoto] = useState(null);
-  const [aadharCard, setAadharCard] = useState(null);
   const [uploading, setUploading] = useState(false);
 
   const handleFileChange = (e) => {
     if (e.target.name === "profilePhoto") {
       setProfilePhoto(e.target.files[0]);
-    } else if (e.target.name === "aadharCard") {
-      setAadharCard(e.target.files[0]);
     }
   };
 
@@ -51,13 +48,11 @@ const AdmissionPage = () => {
     setUploading(true);
 
     const profilePhotoUrl = await uploadToCloudinary(profilePhoto);
-    const aadharCardUrl = await uploadToCloudinary(aadharCard);
 
-    if (profilePhotoUrl && aadharCardUrl) {
+    if (profilePhotoUrl) {
       const fullData = {
         ...formData,
         profilePhoto: profilePhotoUrl,
-        aadharCardLink: aadharCardUrl,
       };
 
       try {
@@ -73,7 +68,6 @@ const AdmissionPage = () => {
           motherName: "",
         });
         setProfilePhoto(null);
-        setAadharCard(null);
       } catch (error) {
         alert("Error submitting form: " + error.message);
       }
@@ -221,19 +215,6 @@ const AdmissionPage = () => {
               <input
                 type="file"
                 name="profilePhoto"
-                onChange={handleFileChange}
-                className="flex-1 border px-4 py-2 rounded-lg"
-                required
-              />
-            </div>
-          </div>
-          <div>
-            <label className="block text-gray-600">Aadhar Card</label>
-            <div className="flex items-center gap-2">
-              <FaCloudUploadAlt className="text-blue-500" />
-              <input
-                type="file"
-                name="aadharCard"
                 onChange={handleFileChange}
                 className="flex-1 border px-4 py-2 rounded-lg"
                 required
