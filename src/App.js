@@ -29,6 +29,7 @@ import VideoPage from "./pages/VideoPage";
 import CourseListPage from "./components/CourseListPage";
 import LocateUs from "./HomeContent/LocateUs";
 import TermsAndConditionsPage from "./HomeContent/T&C";
+import UploadToppersForm from "./components/topperUpload";
 
 const App = () => {
   return (
@@ -45,6 +46,7 @@ const App = () => {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/locate-us" element={<LocateUs />} />
           <Route path="terms" element={<TermsAndConditionsPage />} />
+          <Route path="/topperupload" element={<UploadToppersForm/>}/>
           {/* Add other public routes here */}
           {/* Private Routes (with Navbar) */}
 

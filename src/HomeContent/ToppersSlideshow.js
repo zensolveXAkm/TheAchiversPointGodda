@@ -1,43 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../firebase"; // Make sure this path is correct
 import "./ToppersSlideshow.css"; // Custom styles for slideshow
 
-const toppersList = [
-  {
-    name: "Aryan Singh",
-    city: "Delhi",
-    percentage: "98%",
-    image: "https://via.placeholder.com/300?text=Aryan+Singh",
-    banner: "https://via.placeholder.com/1200x400?text=Aryan+Singh+Banner",
-    testimonial: "The supportive teachers and study materials made a big difference in my success!",
-  },
-  {
-    name: "Sanya Verma",
-    city: "Mumbai",
-    percentage: "96.5%",
-    image: "https://via.placeholder.com/300?text=Sanya+Verma",
-    banner: "https://via.placeholder.com/1200x400?text=Sanya+Verma+Banner",
-    testimonial: "The structured courses and guidance helped me achieve my academic goals!",
-  },
-  {
-    name: "Rahul Mishra",
-    city: "Kolkata",
-    percentage: "95%",
-    image: "https://via.placeholder.com/300?text=Rahul+Mishra",
-    banner: "https://via.placeholder.com/1200x400?text=Rahul+Mishra+Banner",
-    testimonial: "I owe my success to the excellent faculty and personalized attention I received.",
-  },
-  {
-    name: "Meera Nair",
-    city: "Chennai",
-    percentage: "94.8%",
-    image: "https://via.placeholder.com/300?text=Meera+Nair",
-    banner: "https://via.placeholder.com/1200x400?text=Meera+Nair+Banner",
-    testimonial: "The regular tests and insightful feedback were game changers for me.",
-  },
-];
-
 const ToppersSlideshow = () => {
+  const [toppersList, setToppersList] = useState([]);
+
+  useEffect(() => {
+    const fetchToppers = async () => {
+      try {
+        const toppersSnapshot = await getDocs(collection(db, "toppers"));
+        const toppersData = toppersSnapshot.docs.map(doc => doc.data());
+        setToppersList(toppersData);
+      } catch (error) {
+        console.error("Error fetching toppers data:", error);
+      }
+    };
+
+    fetchToppers();
+  }, []);
+
   const settings = {
     dots: true,
     infinite: true,
@@ -49,29 +32,29 @@ const ToppersSlideshow = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto my-8 p-5">
-      <h2 className="text-center text-3xl font-bold text-blue-700 mb-5">🏆 Our Proud Toppers 🏆</h2>
+    <div className="max-w-5xl mx-auto my-12 px-5">
+      <h2 className="text-center text-4xl font-extrabold text-blue-600 mb-8">🏆 Our Proud Toppers 🏆</h2>
       <Slider {...settings}>
         {toppersList.map((topper, index) => (
           <div
             key={index}
-            className="relative flex justify-center items-center h-[400px] md:h-[450px] rounded-lg overflow-hidden shadow-xl"
+            className="relative flex justify-center items-center h-[450px] md:h-[500px] rounded-lg overflow-hidden shadow-2xl transition-transform transform hover:scale-105"
           >
             <img
-              src={topper.banner}
+              src="/topperbg.png"
               alt={`${topper.name}'s Banner`}
-              className="absolute inset-0 w-full h-full object-cover opacity-80"
+              className="absolute inset-0 w-full h-full object-cover opacity-90 transition-opacity duration-500 hover:opacity-100"
             />
-            <div className="relative flex flex-col items-center p-8 text-white bg-black bg-opacity-50 rounded-lg">
+            <div className="relative flex flex-col items-center p-8 text-white rounded-lg shadow-lg">
               <img
-                src={topper.image}
+                src={topper.imageUrl}
                 alt={topper.name}
-                className="w-32 h-32 rounded-full border-4 border-yellow-400 mb-4"
+                className="w-32 h-32 rounded-full border-4 border-yellow-400 mb-4 shadow-lg"
               />
-              <h3 className="text-2xl font-semibold">{topper.name}</h3>
-              <p className="text-lg">{topper.city}</p>
-              <p className="mt-2 text-yellow-300 text-lg">Score: {topper.percentage}</p>
-              <p className="mt-4 italic text-center px-4 text-blue-200">"{topper.testimonial}"</p>
+              <h3 className="text-3xl font-semibold text-yellow-400">{topper.name}</h3>
+              <p className="text-xl text-gray-300">{topper.city}</p>
+              <p className="mt-2 text-yellow-500 text-xl font-bold">Score: {topper.percentage}</p>
+              <p className="mt-4 italic text-center px-4 text-blue-200 text-lg">"{topper.testimonial}"</p>
             </div>
           </div>
         ))}
