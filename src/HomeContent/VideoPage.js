@@ -6,20 +6,31 @@ import CourseListPage from "../components/CourseListPage";
 const coursesData = [
   {
     id: "course1",
-    thumbnail: "https://via.placeholder.com/150",
-    title: "React Basics",
-    description: "Learn the basics of React with this comprehensive guide.",
-    videoLink: "https://www.youtube.com/watch?v=Ke90Tje7VS0",
-    author: "John Doe"
+    thumbnail: "assets/course1.jpeg",
+    title: "Chemical Equations and Reactions || Class - 10",
+    description: "One shot l 2024 - 25 Exam.",
+    videoLink: "https://www.youtube.com/watch?v=DU2IRc-mMqE",
+    type: "video",
+    author: "Abhishek Kumar Mishra",
   },
   {
     id: "course2",
-    thumbnail: "https://via.placeholder.com/150",
-    title: "Firebase Crash Course",
-    description: "Learn Firebase for backend development.",
-    videoLink: "https://www.youtube.com/watch?v=f8qBeaGe2S4",
-    author: "Jane Smith"
-  }
+    thumbnail: "assets/course3.jpeg",
+    title: "Tense",
+    description: "One Shot Video ll Abhishek Kumar Mishra ll SBI, IBPS, SSC, CAT, MAT & other Competitive Exam",
+    videoLink: "https://www.youtube.com/live/f38gVO431Bs?si=ojRZVhjEcPAGOKwf",
+    type: "video",
+    author: "Abhishek Kumar Mishra",
+  },
+  {
+    id: "playlist1",
+    thumbnail: "assets/course2.jpeg",
+    title: "Mathematics Basics Playlist",
+    description: "Complete foundational playlist to strengthen your concepts in Mathematics.",
+    videoLink: "https://www.youtube.com/playlist?list=PLabc12345xyz",
+    type: "playlist",
+    author: "Abhishek Kumar Mishra",
+  },
 ];
 
 const VideoPage2 = () => {

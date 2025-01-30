@@ -1,7 +1,14 @@
-import React from 'react';
-import { FaLightbulb, FaRocket, FaArrowDown } from 'react-icons/fa';
+import React from "react";
+import { FaLightbulb, FaRocket, FaArrowDown } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+
+  const handleNavigation = (path) => {
+    navigate(path);
+  };
+
   return (
     <section className="relative text-white py-24 text-center overflow-hidden">
       {/* Background Video */}
@@ -30,8 +37,22 @@ const HeroSection = () => {
             <p className="text-xl mb-8 font-nunito-sans">
               <FaRocket className="inline-block mr-2" /> Building a community of lifelong learners.
             </p>
+
             {/* Action Buttons */}
-            {/* You can add buttons here */}
+            <div className="flex space-x-4">
+              <button
+                onClick={() => handleNavigation("/login")}
+                className="px-6 py-3 bg-indigo-500 hover:bg-indigo-600 rounded-lg text-white font-semibold shadow-lg transition duration-300"
+              >
+                Get Started
+              </button>
+              <button
+                onClick={() => handleNavigation("/admission")}
+                className="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg text-white font-semibold shadow-lg transition duration-300"
+              >
+                Get Admission
+              </button>
+            </div>
           </div>
 
           {/* Vertical Line Divider (For Desktop Only) */}
