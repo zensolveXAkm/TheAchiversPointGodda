@@ -9,7 +9,8 @@ const images = [
   { path: "assets/img (2).jpeg", title: "Explore Amazing Courses" },
   { path: "assets/img (3).jpeg", title: "Explore Amazing Courses" },
   { path: "assets/img (4).jpeg", title: "Explore Amazing Courses" },
-  { path: "assets/img (2).jpeg", title: "Explore Amazing Courses" },
+  { path: "assets/img (5).jpeg", title: "Explore Amazing Courses" },
+  { path: "assets/img (6).jpeg", title: "Explore Amazing Courses" },
 
 ];
 

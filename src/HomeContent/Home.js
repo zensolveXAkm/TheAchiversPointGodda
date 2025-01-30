@@ -8,6 +8,7 @@ import Navbar from './Navbar';
 import ToppersSlideshow from './ToppersSlideshow';
 import CourseListPage from './CourseListPage';
 import Slideshow from './SlideShow';
+import ImageGrid from './Gallary';
 
 const Home = () => {
   return (
@@ -21,6 +22,7 @@ const Home = () => {
       <CourseListPage/>
       <ReviewsSection />
       <AboutSection />
+      <ImageGrid/>
       <Footer />
     </div>
   );
