@@ -14,7 +14,7 @@
     />
     <meta name="author" content="The Achievers' Point - Abhishek Mishra" />
 
-    <!-- Open Graph Meta Tags for Social Media Sharing -->
+    <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="The Achievers' Point - Best Coaching Center in Godda" />
     <meta
       property="og:description"
@@ -24,7 +24,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="logo.jpeg" />
 
-    <!-- Twitter Meta Tags for Social Media Sharing -->
+    <!-- Twitter Meta Tags -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:site" content="@theachieverspoint" />
     <meta property="twitter:title" content="The Achievers' Point - TAP Coaching Center in Godda" />
@@ -42,37 +42,85 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo.jpeg" />
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-    <!-- Title for SEO -->
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Title -->
     <title>The Achievers' Point - TAP Coaching Center in Godda</title>
+
+    <style>
+      .loader-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.9);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+      }
+      .hidden {
+        opacity: 0;
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <!-- Loading Spinner (Overlay Effect) -->
+    <div id="loader" class="loader-overlay">
+      <div class="flex flex-col items-center">
+        <div class="animate-spin rounded-full h-24 w-24 border-t-4 border-blue-600"></div>
+        <p class="mt-4 text-lg font-semibold text-gray-800">TAP Education...</p>
+      </div>
+    </div>
+
+    <!-- Main Content -->
     <div id="root">
-      <header>
-        <h1>The Achievers' Point (TAP Coaching) - Godda</h1>
-        <p>
-          Welcome to The Achievers' Point, the top coaching center in Godda, Jharkhand. Led
-          by Abhishek Mishra, we specialize in competitive exam preparation for SSC, UPSC,
-          Banking, CLAT, CAT, MAT, and English courses. Our institute, located at Hospital
-          Road, Godda, provides high-quality education to help students achieve their dreams.
+      <header class="bg-blue-600 text-white py-10 px-6 rounded-xl shadow-lg w-full max-w-4xl mx-auto text-center">
+        <h1 class="text-3xl font-bold mb-4">The Achievers' Point (TAP Coaching) - Godda</h1>
+        <p class="text-lg">
+          Welcome to The Achievers' Point, the top coaching center in Godda, Jharkhand. Led by 
+          <span class="font-semibold">Abhishek Mishra</span>, we specialize in competitive exam 
+          preparation for <span class="font-semibold">SSC, UPSC, Banking, CLAT, CAT, MAT</span>, 
+          and <span class="font-semibold">English courses</span>. Our institute, located at 
+          <span class="font-semibold">Hospital Road, Godda</span>, provides high-quality education 
+          to help students achieve their dreams.
         </p>
       </header>
-      <main>
-        <section>
-          <h2>Why Choose TAP Coaching?</h2>
-          <ul>
-            <li>Expert guidance by Abhishek Mishra (AkmXStar)</li>
-            <li>Specialized courses for SSC, UPSC, and Banking exams</li>
-            <li>Located conveniently at Hospital Road, Godda</li>
-            <li>Small batch sizes for personalized attention</li>
-            <li>Affordable fees and modern teaching methods</li>
+
+      <main class="w-full max-w-4xl mx-auto mt-8 space-y-8 text-center">
+        <section class="bg-white shadow-lg rounded-lg p-6">
+          <h2 class="text-2xl font-semibold text-blue-600">Why Choose TAP Coaching?</h2>
+          <ul class="mt-4 space-y-2 text-gray-700 text-lg">
+            <li class="flex items-center justify-center"><span class="text-green-500 text-xl mr-2">✔</span> Expert guidance by <span class="font-semibold">Abhishek Mishra (AkmXStar)</span></li>
+            <li class="flex items-center justify-center"><span class="text-green-500 text-xl mr-2">✔</span> Specialized courses for <span class="font-semibold">SSC, UPSC, and Banking exams</span></li>
+            <li class="flex items-center justify-center"><span class="text-green-500 text-xl mr-2">✔</span> Convenient location at <span class="font-semibold">Hospital Road, Godda</span></li>
+            <li class="flex items-center justify-center"><span class="text-green-500 text-xl mr-2">✔</span> Small batch sizes for personalized attention</li>
+            <li class="flex items-center justify-center"><span class="text-green-500 text-xl mr-2">✔</span> Affordable fees and modern teaching methods</li>
           </ul>
         </section>
-        <section>
-          <h2>Contact Us</h2>
-          <p>Visit us at Hospital Road, Godda, Jharkhand or call 7061823757 for inquiries.</p>
+
+        <section class="bg-white shadow-lg rounded-lg p-6">
+          <h2 class="text-2xl font-semibold text-blue-600">Contact Us</h2>
+          <p class="text-lg text-gray-700 mt-4">
+            Visit us at <span class="font-semibold">Hospital Road, Godda, Jharkhand</span> or call 
+            <a href="tel:7061823757" class="text-blue-500 hover:underline font-semibold">7061823757</a> for inquiries.
+          </p>
         </section>
       </main>
+
+      <footer class="mt-12 text-gray-600 text-sm text-center">
+        &copy; 2024 The Achievers' Point. All rights reserved.
+      </footer>
     </div>
+<!-- 
+    <script>
+      setTimeout(() => {
+        document.getElementById("loader").classList.add("hidden");
+      }, 5000);
+    </script> -->
   </body>
 </html>

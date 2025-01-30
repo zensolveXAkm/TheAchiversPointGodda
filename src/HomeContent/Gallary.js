@@ -15,7 +15,6 @@ const images = [
   "/assets/gallary/gallary (12).jpg",
   "/assets/gallary/gallary (13).jpg",
   "/assets/gallary/gallary (14).jpg",
-  "/assets/gallary/gallary (15).jpg",
   "/assets/gallary/gallary (16).jpg",
   "/assets/gallary/gallary (17).jpg",
   "/assets/gallary/gallary (18).jpg",
