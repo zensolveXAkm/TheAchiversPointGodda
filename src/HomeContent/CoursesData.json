@@ -1,0 +1,93 @@
+[
+    {
+      "id": "course1",
+      "thumbnail": "assets/course1.jpeg",
+      "title": "Chemical Equations and Reactions || Class - 10",
+      "description": "One shot l 2024 - 25 Exam.",
+      "videoLink": "https://www.youtube.com/watch?v=DU2IRc-mMqE",
+      "type": "video",
+      "author": "Abhishek Kumar Mishra"
+    },
+    {
+      "id": "course2",
+      "thumbnail": "assets/course3.jpeg",
+      "title": "Tense",
+      "description": "One Shot Video ll Abhishek Kumar Mishra ll SBI, IBPS, SSC, CAT, MAT & other Competitive Exam",
+      "videoLink": "https://www.youtube.com/live/f38gVO431Bs?si=ojRZVhjEcPAGOKwf",
+      "type": "video",
+      "author": "Abhishek Kumar Mishra"
+    },
+    {
+      "id": "course3",
+      "thumbnail": "assets/course5.jpeg",
+      "title": "A Letter to God || Flamingo  || Class - 10",
+      "description": "One shot l 2024 - 25 Exam.",
+      "videoLink": "https://www.youtube.com/watch?v=j9v2inRYQU0",
+      "type": "video",
+      "author": "Abhishek Kumar Mishra"
+    },
+    {
+      "id": "course4",
+      "thumbnail": "assets/course6.jpeg",
+      "title": "The Last Lesson || Flamingo || Class - 12th",
+      "description": "One shot l 2024 - 25 Exam.",
+      "videoLink": "https://www.youtube.com/watch?v=zJocZtCB2i0",
+      "type": "video",
+      "author": "Abhishek Kumar Mishra"
+    },
+    {
+      "id": "course5",
+      "thumbnail": "assets/course7.jpeg",
+      "title": "My Mother at Sixty -Six || Flamingo || Class - 12th",
+      "description": "One shot l 2024 - 25 Exam.",
+      "videoLink": "https://www.youtube.com/watch?v=HYnStG7tBdc",
+      "type": "video",
+      "author": "Abhishek Kumar Mishra"
+    },
+    {
+      "id": "course6",
+      "thumbnail": "assets/course8.jpeg",
+      "title": "Is Matter Around us Pure? || Chemistry || Class - 9th",
+      "description": "Chapter - 2 Class 9th",
+      "videoLink": "https://www.youtube.com/watch?v=JzWEfBSQUA4",
+      "type": "video",
+      "author": "Abhishek Kumar Mishra"
+    },
+    {
+        "id": "course7",
+        "thumbnail": "assets/course9.jpeg",
+        "title": "The rise of Nationalism || History || Class - 10th",
+        "description": "History Class - 10th First Ch.",
+        "videoLink": "https://www.youtube.com/watch?v=b875MXApKYw",
+        "type": "video",
+        "author": "Abhishek Kumar Mishra"
+      },
+    {
+      "id": "playlist1",
+      "thumbnail": "assets/course2.jpeg",
+      "title": "120 Rules of Grammar",
+      "description": "Complete Solutions of English Grammar.",
+      "videoLink": "https://www.youtube.com/playlist?list=PLXOOUAgjCcK7taMblmZHTlRy4-Dq3a9MJ",
+      "type": "playlist",
+      "author": "Abhishek Kumar Mishra"
+    },
+    {
+        "id": "playlist3",
+        "thumbnail": "assets/course10.jpeg",
+        "title": "Vocab Series",
+        "description": "Useful for Banking.",
+        "videoLink": "https://www.youtube.com/playlist?list=PLXOOUAgjCcK4gc2pqg9yaMwo3p8QdJv3S",
+        "type": "playlist",
+        "author": "Abhishek Kumar Mishra"
+      },
+    {
+      "id": "playlist2",
+      "thumbnail": "assets/course4.jpeg",
+      "title": "Vedic Mathematics - वैदिक गणित",
+      "description": "अब गणित का समाधान चुटकियों में",
+      "videoLink": "https://www.youtube.com/playlist?list=PLXOOUAgjCcK6fYhs8ZthzhitotlELzDPe",
+      "type": "playlist",
+      "author": "Abhishek Kumar Mishra"
+    }
+  ]
+  

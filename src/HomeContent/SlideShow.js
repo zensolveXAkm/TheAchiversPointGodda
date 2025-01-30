@@ -5,8 +5,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 const images = [
-  { path: "assets/img1.jpeg", title: "Welcome to Our Platform" },
-  { path: "assets/img2.jpeg", title: "Explore Amazing Courses" },
+  { path: "assets/img (1).jpeg", title: "Welcome to Our Platform" },
+  { path: "assets/img (2).jpeg", title: "Explore Amazing Courses" },
+  { path: "assets/img (3).jpeg", title: "Explore Amazing Courses" },
+  { path: "assets/img (4).jpeg", title: "Explore Amazing Courses" },
+  { path: "assets/img (2).jpeg", title: "Explore Amazing Courses" },
+
 ];
 
 const Slideshow = () => {
@@ -30,7 +34,7 @@ const Slideshow = () => {
   return (
     <div className="relative w-full max-w-5xl mx-auto mt-10 px-4 sm:px-6 lg:px-8">
       <h2 className="text-2xl sm:text-4xl font-bold text-center text-blue-600 mb-6 sm:mb-8">
-        📸 Explore Our Gallery 📸
+        Our Courses
       </h2>
       <Slider {...settings}>
         {images.map((img, index) => (
