@@ -6,6 +6,7 @@ import AboutSection from './About';
 import Footer from './Footer';
 import Navbar from './Navbar';
 import ToppersSlideshow from './ToppersSlideshow';
+import CourseListPage from './CourseListPage';
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <HeroSection />
       <Courses />
       <ToppersSlideshow/>
+      <CourseListPage/>
       <ReviewsSection />
       <AboutSection />
       <Footer />

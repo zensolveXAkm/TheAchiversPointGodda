@@ -35,10 +35,10 @@ const UploadToppersForm = () => {
       // Upload image to Cloudinary
       const formDataImage = new FormData();
       formDataImage.append("file", image);
-      formDataImage.append("upload_preset", "uday-oc"); // Make sure your Cloudinary preset is correct
+      formDataImage.append("upload_preset", "tap-edu"); // Make sure your Cloudinary preset is correct
 
       const cloudinaryResponse = await axios.post(
-        "https://api.cloudinary.com/v1_1/dqubwzm17/image/upload",
+        "https://api.cloudinary.com/v1_1/dkzczonkz/image/upload",
         formDataImage
       );
 

@@ -1,8 +1,8 @@
 const cloudinaryConfig = {
-    cloudName: "dqubwzm17",
-    apiKey: "379931843428442",
+    cloudName: "dkzczonkz",
+    apiKey: "588654794854165",
     apiSecret: "cNlUdi7BCOIwqsw6zc9ew-BftnI",
-    uploadPreset: "uday-oc",
+    uploadPreset: "tap-edu",
   };
   
   export const uploadImage = async (file) => {

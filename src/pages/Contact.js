@@ -7,8 +7,8 @@ import Navbar2 from "../HomeContent/Navbar";
 const db = getFirestore();
 
 const cloudinaryConfig = {
-  cloudName: "dqubwzm17",
-  uploadPreset: "uday-oc",
+  cloudName: "dkzczonkz",
+  uploadPreset: "tap-edu",
 };
 
 const Contact = () => {
