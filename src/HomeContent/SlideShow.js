@@ -46,10 +46,8 @@ const Slideshow = () => {
               className="w-full h-[250px] sm:h-[350px] md:h-[650px] object-cover rounded-lg"
             />
             {/* Overlay Text */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-20">
-              <h3 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-white text-center px-4">
-                {img.title}
-              </h3>
+            <div className="absolute inset-0 flex items-center justify-center ">
+            
             </div>
           </div>
         ))}

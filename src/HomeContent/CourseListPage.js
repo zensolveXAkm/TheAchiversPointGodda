@@ -21,6 +21,15 @@ const coursesData = [
     author: "Abhishek Kumar Mishra",
   },
   {
+    id: "course3",
+    thumbnail: "assets/course1.jpeg",
+    title: "A Letter to God || Flamingo  || Class - 10",
+    description: "One shot l 2024 - 25 Exam.",
+    videoLink: "https://www.youtube.com/watch?v=DU2IRc-mMqE",
+    type: "video",
+    author: "Abhishek Kumar Mishra",
+  },
+  {
     id: "playlist1",
     thumbnail: "assets/course2.jpeg",
     title: "120 Rules of Grammar",
