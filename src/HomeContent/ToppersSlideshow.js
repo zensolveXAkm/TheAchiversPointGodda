@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase"; // Make sure this path is correct
+import { db } from "../firebase"; // Ensure this path is correct
 import "./ToppersSlideshow.css"; // Custom styles for slideshow
 
 const ToppersSlideshow = () => {
@@ -11,7 +11,8 @@ const ToppersSlideshow = () => {
     const fetchToppers = async () => {
       try {
         const toppersSnapshot = await getDocs(collection(db, "toppers"));
-        const toppersData = toppersSnapshot.docs.map(doc => doc.data());
+        const toppersData = toppersSnapshot.docs.map((doc) => doc.data());
+        console.log(toppersData); // Log to check the data
         setToppersList(toppersData);
       } catch (error) {
         console.error("Error fetching toppers data:", error);
@@ -25,10 +26,12 @@ const ToppersSlideshow = () => {
     dots: true,
     infinite: true,
     speed: 700,
-    slidesToShow: 1,
+    slidesToShow: 1, // Show one slide at a time
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
+    centerMode: false,
+    focusOnSelect: true,
   };
 
   return (
