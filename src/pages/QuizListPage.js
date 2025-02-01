@@ -7,7 +7,9 @@ const QuizList = () => {
   const [quizzes, setQuizzes] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const scrollContainerRef = useRef(null);
+  const [activeTab, setActiveTab] = useState("English"); // Default active tab
+  const tabContainerRef = useRef(null); // Ref for tab container
+  const scrollContainerRef = useRef(null); // Ref for quiz cards container
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -16,13 +18,13 @@ const QuizList = () => {
         const quizSnapshot = await getDocs(quizCollection);
         const quizList = quizSnapshot.docs.map((doc) => doc.data());
 
-        // Group quizzes by topic
+        // Group quizzes by subject, handle undefined subjects
         const groupedQuizzes = quizList.reduce((acc, quiz) => {
-          const { topic } = quiz;
-          if (!acc[topic]) {
-            acc[topic] = [];
+          const subject = quiz.subject || "Others";
+          if (!acc[subject]) {
+            acc[subject] = [];
           }
-          acc[topic].push(quiz);
+          acc[subject].push(quiz);
           return acc;
         }, {});
 
@@ -67,13 +69,39 @@ const QuizList = () => {
     );
   }
 
+  const subjects = ["English", "Maths", "Science", "SST", "Others"];
+
   return (
-    <div className="max-w-6xl mx-auto mt-10">
+    <div className="max-w-6xl mx-auto p-1">
       <h2 className="text-center text-2xl font-semibold mb-6">Available Quizzes</h2>
 
-      {Object.keys(quizzes).length === 0 ? (
-        <div className="text-center text-gray-600">No quizzes available</div>
-      ) : (
+      {/* Horizontally Scrollable Tab Navigation */}
+      <div
+        ref={tabContainerRef}
+        className="flex overflow-x-auto space-x-4 scroll-smooth snap-x snap-mandatory mb-8"
+        style={{
+          scrollSnapType: "x mandatory",
+          scrollbarWidth: "none",
+          msOverflowStyle: "none",
+        }}
+      >
+        {subjects.map((subject) => (
+          <button
+            key={subject}
+            onClick={() => setActiveTab(subject)}
+            className={`flex-none px-6 py-2 rounded-full font-medium transition-colors duration-300 ${
+              activeTab === subject
+                ? "bg-blue-600 text-white"
+                : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+            }`}
+          >
+            {subject}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      {quizzes[activeTab] && quizzes[activeTab].length > 0 ? (
         <div className="relative">
           {/* Scroll Buttons */}
           <button
@@ -93,40 +121,30 @@ const QuizList = () => {
               msOverflowStyle: "none",
             }}
           >
-            {Object.keys(quizzes).map((topic) => (
-              <Link
-                key={topic}
-                to={`/quiz/${topic}`}
-                className="flex-none w-64 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 snap-start"
-              >
-                {/* Thumbnail */}
-                <img
-                  src="/Quiz.png"
-                  alt={`${topic} thumbnail`}
-                  className="w-full h-28 object-cover"
-                />
+            {[...new Set(quizzes[activeTab].map((quiz) => quiz.topic))].map(
+              (topic, index) => (
+                <Link
+                  key={index}
+                  to={`/quiz/${topic}`}
+                  className="flex-none w-64 bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300 snap-start"
+                >
+                  {/* Thumbnail */}
+                  <img
+                    src="/Quiz.jpg"
+                    alt={`${topic} thumbnail`}
+                    className="w-full h-28 object-cover"
+                  />
 
-                {/* Content */}
-                <div className="p-4">
-                  <h3 className="text-lg font-semibold text-gray-900">{topic}</h3>
-                  <ul className="text-sm text-gray-700">
-                    <li>
-                      <strong>Per Question Time:</strong>{" "}
-                      {quizzes[topic][0]?.time || "N/A"} seconds
-                    </li>
-                    <li>
-                      <strong>Total Questions:</strong> {quizzes[topic].length}
-                    </li>
-                    <li>
-                      <strong>For Class:</strong> {quizzes[topic][0]?.class || "N/A"}
-                    </li>
-                  </ul>
-                  <p className="text-blue-500 font-medium mt-4 text-right">
-                    Start Quiz →
-                  </p>
-                </div>
-              </Link>
-            ))}
+                  {/* Content */}
+                  <div className="p-4">
+                    <h3 className="text-lg font-semibold text-gray-900">{topic}</h3>
+                    <p className="text-blue-500 font-medium mt-4 text-right">
+                      Start Quiz →
+                    </p>
+                  </div>
+                </Link>
+              )
+            )}
           </div>
 
           {/* Scroll Right Button */}
@@ -137,6 +155,8 @@ const QuizList = () => {
             →
           </button>
         </div>
+      ) : (
+        <div className="text-center text-gray-600">No quizzes available for {activeTab}</div>
       )}
     </div>
   );
