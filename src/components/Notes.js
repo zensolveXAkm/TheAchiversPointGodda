@@ -5,30 +5,62 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
+  const [userClass, setUserClass] = useState("");
+  const [userSubject, setUserSubject] = useState("");
 
   useEffect(() => {
     const fetchNotes = async () => {
       try {
         const userDoc = await getDoc(doc(db, "students", auth.currentUser.uid));
         if (userDoc.exists()) {
-          const userClass = userDoc.data().class; // Fetch user's class
-          const querySnapshot = await getDocs(collection(db, "notes"));
-          const notesData = querySnapshot.docs
-            .map((doc) => ({ id: doc.id, ...doc.data() }))
-            .filter((note) => note.class === userClass); // Filter by class
-          setNotes(notesData);
+          setUserClass(userDoc.data().class); // Fetch user's class
+          // Set user's subject as well if available (assumed to be fetched from user data or set manually)
+          setUserSubject(userDoc.data().subject || ""); // Assuming subject info exists
         }
+
+        const querySnapshot = await getDocs(collection(db, "notes"));
+        const notesData = querySnapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter(
+            (note) =>
+              note.class === userClass &&
+              (userSubject ? note.subject === userSubject : true) // Filter by subject if userSubject is selected
+          );
+        setNotes(notesData);
       } catch (error) {
         console.error("Error fetching notes:", error);
       }
     };
-    fetchNotes();
-  }, []);
+
+    if (auth.currentUser) {
+      fetchNotes();
+    }
+  }, [userClass, userSubject]);
 
   return (
     <div className="bg-gray-50 py-10 px-6">
       <div className="max-w-5xl mx-auto">
         <h2 className="text-4xl font-bold mb-8 text-center">Class Notes</h2>
+
+        {/* Subject Filter */}
+        <div className="mb-6">
+          <label htmlFor="subject" className="block text-gray-600 mb-2">Filter by Subject:</label>
+          <select
+            id="subject"
+            value={userSubject}
+            onChange={(e) => setUserSubject(e.target.value)}
+            className="w-full border p-2 rounded"
+          >
+            <option value="">All Subjects</option>
+            <option value="Science">Science</option>
+            <option value="Maths">Maths</option>
+            <option value="Social Science">Social Science</option>
+            <option value="Hindi">Hindi</option>
+            <option value="English">English</option>
+            <option value="Computer">Computer</option>
+          </select>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {notes.length > 0 ? (
             notes.map((note) => (

@@ -7,6 +7,7 @@ import { onAuthStateChanged } from "firebase/auth";
 const CourseCarousel = () => {
   const [courses, setCourses] = useState([]);
   const [userClass, setUserClass] = useState("");
+  const [selectedSubject, setSelectedSubject] = useState(""); // New state for subject
   const scrollContainerRef = useRef(null);
 
   useEffect(() => {
@@ -46,7 +47,12 @@ const CourseCarousel = () => {
     return () => unsubscribe();
   }, []);
 
-  const filteredCourses = courses.filter((course) => course.classEnrollingFor === userClass);
+  // Filter courses by both class and subject
+  const filteredCourses = courses.filter((course) => {
+    const matchesClass = course.classEnrollingFor === userClass;
+    const matchesSubject = selectedSubject ? course.subject === selectedSubject : true;
+    return matchesClass && matchesSubject;
+  });
 
   const scrollLeft = () => {
     scrollContainerRef.current.scrollBy({
@@ -67,6 +73,27 @@ const CourseCarousel = () => {
       <h2 className="text-3xl font-bold mb-6 text-blue-800">
         Popular Courses for {userClass || "Your Class"}
       </h2>
+
+      {/* Subject Filter Dropdown */}
+      <div className="mb-6">
+        <label htmlFor="subject" className="text-sm font-medium text-gray-700">
+          Filter by Subject:
+        </label>
+        <select
+          id="subject"
+          value={selectedSubject}
+          onChange={(e) => setSelectedSubject(e.target.value)}
+          className="w-full border rounded px-4 py-2 mt-2"
+        >
+          <option value="">All Subjects</option>
+          <option value="Science">Science</option>
+          <option value="Maths">Maths</option>
+          <option value="Social Science">Social Science</option>
+          <option value="Hindi">Hindi</option>
+          <option value="English">English</option>
+          <option value="Computer">Computer</option>
+        </select>
+      </div>
 
       <div className="relative">
         {/* Scroll Left Button */}
@@ -106,6 +133,9 @@ const CourseCarousel = () => {
                 <p className="mt-1 text-sm font-medium text-blue-600">
                   Class: {course.classEnrollingFor}
                 </p>
+                <p className="mt-1 text-sm font-medium text-blue-600">
+                  Subject: {course.subject}
+                </p>
                 <a
                   href={course.courseLink}
                   target="_blank"
@@ -130,7 +160,7 @@ const CourseCarousel = () => {
 
       {filteredCourses.length === 0 && (
         <p className="text-center text-gray-500 mt-6">
-          No courses available for your class at the moment.
+          No courses available for your class and selected subject at the moment.
         </p>
       )}
     </div>

@@ -6,6 +6,7 @@ import { getAuth } from "firebase/auth";
 
 const HomeworkPage = () => {
   const [homeworkList, setHomeworkList] = useState([]);
+  const [subjectFilter, setSubjectFilter] = useState(""); // Added state for subject filter
   const [submission, setSubmission] = useState({
     name: "",
     email: "",
@@ -42,12 +43,12 @@ const HomeworkPage = () => {
         const querySnapshot = await getDocs(collection(db, "homework"));
         const filteredHomework = querySnapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
-          .filter((hw) => hw.class === userClass);
+          .filter((hw) => hw.class === userClass && (subjectFilter ? hw.subject === subjectFilter : true));
         setHomeworkList(filteredHomework);
       };
       fetchHomework();
     }
-  }, [userClass]);
+  }, [userClass, subjectFilter]); // Dependency array now includes subjectFilter
 
   useEffect(() => {
     const fetchUserSubmissions = async () => {
@@ -114,6 +115,21 @@ const HomeworkPage = () => {
   return (
     <div className="min-h-screen p-8 bg-gradient-to-b from-gray-100 to-blue-50">
       <h2 className="text-4xl font-extrabold mb-6 text-center text-blue-800">Homework for Class {userClass}</h2>
+
+      <div className="mb-4">
+        <select
+          onChange={(e) => setSubjectFilter(e.target.value)}
+          className="p-2 border rounded w-full max-w-xs mx-auto"
+        >
+          <option value="">All Subjects</option>
+          {["Science", "Maths", "Social Science", "English"].map((subject, index) => (
+            <option key={index} value={subject}>
+              {subject}
+            </option>
+          ))}
+        </select>
+      </div>
+
       <div className="space-y-6">
         {homeworkList.length === 0 ? (
           <p className="text-center text-gray-600 text-lg">No homework available for this class.</p>
