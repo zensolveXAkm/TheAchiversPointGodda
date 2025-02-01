@@ -106,7 +106,7 @@ const ClassesPage = () => {
                   {format(new Date(classItem.endDateTime), "MMM dd, yyyy HH:mm")}
                 </p>
                 <p className="text-gray-500 mt-1">
-                  <strong>Teacher:</strong> {classItem.teacher || "Abishek Mishrwa"}
+                  <strong>Teacher:</strong> {classItem.teacher || "Abishek Mishra"}
                 </p>
 
                 {/* Buttons */}
