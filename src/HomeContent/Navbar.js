@@ -32,7 +32,7 @@ const Navbar2 = () => {
       {/* Logo */}
       <div className="logo-container flex items-center">
         <FaBook className="mr-2 text-2xl" />
-        <h1 className="text-xl font-bold whitespace-nowrap">THE ACHIEVERS' POINT </h1>
+        <h1 className="text-xl font-bold whitespace-nowrap">THE ACHIEVERS' POINT</h1>
       </div>
 
       {/* Menu Icon */}
@@ -43,8 +43,8 @@ const Navbar2 = () => {
       {/* Navbar Links */}
       <div
         className={`${
-          isExpanded ? 'block' : 'hidden'
-        } md:flex md:flex-row items-center md:space-x-4 absolute md:static top-full left-0 w-full bg-indigo-500 md:bg-transparent rounded-b-lg md:rounded-none py-2 md:py-0 shadow-lg md:shadow-none`}
+          isExpanded || !isMobile ? 'flex' : 'hidden'
+        } flex-col md:flex-row items-center md:space-x-4 absolute md:static top-full left-0 w-full bg-indigo-500 md:bg-transparent rounded-b-lg md:rounded-none py-2 md:py-0 shadow-lg md:shadow-none`}
       >
         <ul className="flex flex-col md:flex-row md:space-x-6 font-medium md:justify-end w-full">
           {menuItems.map((item) => (
