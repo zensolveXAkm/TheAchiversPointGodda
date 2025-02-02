@@ -1,41 +1,57 @@
 import React, { useEffect, useState } from "react";
-import { auth, db } from "../firebase"; // Ensure correct Firestore import
+import { auth, db } from "../firebase";
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
+  const [allNotes, setAllNotes] = useState([]); // Store unfiltered notes
   const [userClass, setUserClass] = useState("");
   const [userSubject, setUserSubject] = useState("");
 
   useEffect(() => {
-    const fetchNotes = async () => {
+    const fetchUserDetails = async () => {
       try {
         const userDoc = await getDoc(doc(db, "students", auth.currentUser.uid));
         if (userDoc.exists()) {
-          setUserClass(userDoc.data().class); // Fetch user's class
-          // Set user's subject as well if available (assumed to be fetched from user data or set manually)
-          setUserSubject(userDoc.data().subject || ""); // Assuming subject info exists
+          setUserClass(userDoc.data().class || "");
+          setUserSubject(""); // Default to show all subjects initially
         }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
 
+    if (auth.currentUser) {
+      fetchUserDetails();
+    }
+  }, []);
+
+  useEffect(() => {
+    const fetchNotes = async () => {
+      try {
         const querySnapshot = await getDocs(collection(db, "notes"));
-        const notesData = querySnapshot.docs
-          .map((doc) => ({ id: doc.id, ...doc.data() }))
-          .filter(
-            (note) =>
-              note.class === userClass &&
-              (userSubject ? note.subject === userSubject : true) // Filter by subject if userSubject is selected
-          );
-        setNotes(notesData);
+        const notesData = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setAllNotes(notesData); // Store all notes initially
       } catch (error) {
         console.error("Error fetching notes:", error);
       }
     };
 
-    if (auth.currentUser) {
-      fetchNotes();
-    }
-  }, [userClass, userSubject]);
+    fetchNotes();
+  }, []);
+
+  useEffect(() => {
+    const filteredNotes = allNotes.filter(
+      (note) =>
+        note.class === userClass &&
+        (userSubject ? note.subject === userSubject : true)
+    );
+    setNotes(filteredNotes);
+  }, [userClass, userSubject, allNotes]);
 
   return (
     <div className="bg-gray-50 py-10 px-6">
@@ -44,7 +60,9 @@ const Notes = () => {
 
         {/* Subject Filter */}
         <div className="mb-6">
-          <label htmlFor="subject" className="block text-gray-600 mb-2">Filter by Subject:</label>
+          <label htmlFor="subject" className="block text-gray-600 mb-2">
+            Filter by Subject:
+          </label>
           <select
             id="subject"
             value={userSubject}
@@ -69,7 +87,9 @@ const Notes = () => {
                 className="bg-white rounded-lg overflow-hidden border border-gray-300 hover:border-black hover:bg-gray-100 transition-all cursor-pointer"
               >
                 <div className="p-4">
-                  <h3 className="text-xl font-semibold mb-2 text-gray-900">{note.topic}</h3>
+                  <h3 className="text-xl font-semibold mb-2 text-gray-900">
+                    {note.topic}
+                  </h3>
                   <p className="text-gray-600 mb-1">
                     <strong>Subject:</strong> {note.subject}
                   </p>
