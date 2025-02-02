@@ -5,6 +5,7 @@ import {
   Route,
   Routes
 } from "react-router-dom";
+import { useEffect } from "react";
 import HomePage from "./pages/HomePage";
 import AdmissionPage from "./HomeContent/AdmissionPage";
 import HomeworkPage from "./pages/HomeworkPage";
@@ -33,6 +34,27 @@ import UploadToppersForm from "./components/topperUpload";
 import VideoPage2 from "./HomeContent/VideoPage";
 
 const App = () => {
+  useEffect(() => {
+    // Disable right-click
+    document.addEventListener("contextmenu", (e) => e.preventDefault());
+
+    // Disable Print Screen
+    const handleKeyUp = (e) => {
+      if (e.key === "PrintScreen") {
+        alert("Screenshots are disabled for security reasons.");
+        document.body.style.visibility = "hidden";
+        setTimeout(() => {
+          document.body.style.visibility = "visible";
+        }, 1000);
+      }
+    };
+    document.addEventListener("keyup", handleKeyUp);
+
+    return () => {
+      document.removeEventListener("contextmenu", (e) => e.preventDefault());
+      document.removeEventListener("keyup", handleKeyUp);
+    };
+  }, []);
   return (
     <AuthProvider>
       <Router>
