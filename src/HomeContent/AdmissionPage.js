@@ -190,7 +190,6 @@ const AdmissionPage = () => {
             <option value="XI">XI</option>
             <option value="XII">XII</option>
             <option value="COMPETITIVE EXAM">Competitive Exam</option>
-            <option value="GENERAL">GENERAL</option>
               </select>
             </div>
           </div>
