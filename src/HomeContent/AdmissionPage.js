@@ -180,20 +180,17 @@ const AdmissionPage = () => {
               >
                 <option value="" disabled>
                   Select Class
-                </option>
-                <option value="VIII">VIII</option>
-                <option value="IX">IX</option>
-                <option value="X">X</option>
-                <option value="XI">XI</option>
-                <option value="XII">XII</option>
-                <option value="UPSC">UPSC</option>
-                <option value="SSC">SSC</option>
-                <option value="BANKING">BANKING</option>
-                <option value="CLAT">CLAT</option>
-                <option value="CAT">CAT</option>
-                <option value="MAT">MAT</option>
-                <option value="XAT">XAT</option>
-                <option value="CUET">CUET</option>
+                </option>            
+                <option value="">Select a class</option>
+            <option value="VI">VI</option>
+            <option value="VII">VII</option>
+            <option value="VIII">VIII</option>
+            <option value="IX">IX</option>
+            <option value="X">X</option>
+            <option value="XI">XI</option>
+            <option value="XII">XII</option>
+            <option value="COMPETITIVE EXAM">Competitive Exam</option>
+            <option value="GENERAL">GENERAL</option>
               </select>
             </div>
           </div>
